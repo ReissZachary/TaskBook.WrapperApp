@@ -7,6 +7,60 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <!--header-->
+        <StackPanel Background="#008000"
+                    Orientation="Horizontal"
+                    Grid.ColumnSpan="2">
+            <Image Source="Images/checkMark.png"
+                   Height="90"
+                   Margin="20"/>
+            <TextBlock Text="TaskBook: The Best TaskBook App in the World"
+                       FontSize="30"
+                       FontWeight="ExtraBold"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       Margin="10"/>
+        </StackPanel>
+
+        <!--list of todo-->
+        <ListView Background="#333333"
+                      Grid.Row="1">
+            <ListViewItem>Database HW</ListViewItem>
+            <ListViewItem>GUI HW</ListViewItem>
+            <ListViewItem>Go Shopping</ListViewItem>
+            <ListViewItem>Change Diapers</ListViewItem>
+            <ListViewItem>Call Brian</ListViewItem>
+            <ListViewItem>Call Brian</ListViewItem>
+            <ListViewItem>Call Brian</ListViewItem>
+            <ListViewItem>Call Brian</ListViewItem>
+            <ListViewItem>Call Brian</ListViewItem>
+            <ListViewItem>Call Brian</ListViewItem>
+            <ListViewItem>Call Brian</ListViewItem>
+        </ListView>
+
+
+        <Button HorizontalAlignment="Left" 
+                VerticalAlignment="Bottom"
+                Margin="100"
+                Click="ButtonAddTodo_Click"
+                Grid.Column="2"
+                Grid.Row="2">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Add Todo"
+                               Margin="5 0 0 0"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
     </Grid>
 </Window>
