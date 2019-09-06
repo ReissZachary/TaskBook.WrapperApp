@@ -20,11 +20,6 @@ namespace TaskBook.WPF
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void ButtonAddTodo_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }     
     }
 }

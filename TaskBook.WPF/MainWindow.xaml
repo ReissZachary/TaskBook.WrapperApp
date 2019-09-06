@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskBook.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -34,33 +36,49 @@
 
         <!--list of todo-->
         <ListView Background="#333333"
-                      Grid.Row="1">
-            <ListViewItem>Database HW</ListViewItem>
-            <ListViewItem>GUI HW</ListViewItem>
-            <ListViewItem>Go Shopping</ListViewItem>
-            <ListViewItem>Change Diapers</ListViewItem>
-            <ListViewItem>Call Brian</ListViewItem>
-            <ListViewItem>Call Brian</ListViewItem>
-            <ListViewItem>Call Brian</ListViewItem>
-            <ListViewItem>Call Brian</ListViewItem>
-            <ListViewItem>Call Brian</ListViewItem>
-            <ListViewItem>Call Brian</ListViewItem>
-            <ListViewItem>Call Brian</ListViewItem>
+                      Grid.Row="1"
+                  Foreground="#008000"
+                  ItemsSource="{Binding ToDoList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding Due, StringFormat='d'}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
 
-
-        <Button HorizontalAlignment="Left" 
+        <Grid Grid.Row="1"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="Auto"/>
+                <RowDefinition Height ="Auto"/>
+                <RowDefinition Height ="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "Auto"/>
+                <ColumnDefinition Width = "Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Task Name"/>
+            <TextBox Grid.Column="1"
+                     Text="{Binding NewTaskName, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Due Date"
+                       Grid.Row="1"/>
+            <DatePicker Grid.Row="1"
+                        Grid.Column="1"
+                        SelectedDate="{Binding NewTaskDue, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button HorizontalAlignment="Left" 
                 VerticalAlignment="Bottom"
-                Margin="100"
-                Click="ButtonAddTodo_Click"
-                Grid.Column="2"
+                Command="{Binding AddNewTask}"
+                Grid.Column="1"
                 Grid.Row="2">
-            <Button.Content>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Add Todo"
-                               Margin="5 0 0 0"/>
-                </StackPanel>
-            </Button.Content>
-        </Button>
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Add Todo"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </Grid>
     </Grid>
 </Window>
