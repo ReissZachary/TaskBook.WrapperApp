@@ -34,12 +34,13 @@
                        Margin="10"/>            
         </StackPanel>
 
-            <ListView Background="#333333"
+        <!--list of todo-->
+        <ListView Background="#333333"
                       Grid.Row="1">
-                <ListViewItem>Database HW</ListViewItem>
-                <ListViewItem>GUI HW</ListViewItem>
-                <ListViewItem>Go Shopping</ListViewItem>
-                <ListViewItem>Change Diapers</ListViewItem>
+            <ListViewItem>Database HW</ListViewItem>
+            <ListViewItem>GUI HW</ListViewItem>
+            <ListViewItem>Go Shopping</ListViewItem>
+            <ListViewItem>Change Diapers</ListViewItem>
             <ListViewItem>Call Brian</ListViewItem>
             <ListViewItem>Call Brian</ListViewItem>
             <ListViewItem>Call Brian</ListViewItem>
