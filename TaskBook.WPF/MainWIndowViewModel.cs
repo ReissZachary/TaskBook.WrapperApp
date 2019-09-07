@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace TaskBook.WPF
 {
@@ -13,19 +14,42 @@ namespace TaskBook.WPF
     {
         public MainWindowViewModel()
         {
+            ToDoList = new ObservableCollection<ToDoItem>();           
+
+
             AddNewTask = new DelegateCommand(
                 () =>
                 {
                     //execute
-                    
+                    //string message = "ADDED TODO";
+                    //MessageBox.Show(message);
+                    ToDoList.Add(new ToDoItem { Name = NewTaskName + " ~ ", Due = NewTaskDue });
+                    NewTaskName = null;
+                    //NewTaskDue = default;
                 },
                 () =>
                 {
                     //can execute                    
                     return !string.IsNullOrEmpty(NewTaskName) && NewTaskDue > DateTime.MinValue;
                 });
-            ToDoList = new ObservableCollection<ToDoItem>();
-            ToDoList.Add(new ToDoItem { Name = "DEMO" });
+
+            //CompletedTask = new DelegateCommand(
+            //    () =>
+            //    {
+            //        //execute
+            //        string message = "Completed Task";
+            //        MessageBox.Show(message);
+
+            //    },
+            //    () =>
+            //    {
+            //        //can execute
+            //        return true;
+            //    });
+
+
+            //ToDoList = new ObservableCollection<ToDoItem>();
+            //ToDoList.Add(new ToDoItem { Name = "DEMO" });
         }
 
         
@@ -58,6 +82,8 @@ namespace TaskBook.WPF
             get { return toDoList; }
             set { toDoList = value; }
         }
+
+        //public DelegateCommand CompletedTask { get; }
 
         public DelegateCommand AddNewTask { get; }
 
